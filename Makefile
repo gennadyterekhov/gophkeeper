@@ -1,4 +1,7 @@
 
+revive:
+	revive -config revive_config.toml -formatter friendly ./... &> artefacts/linter_reports/revive.out
+
 prepare_coverage_profile:
 	go test -v -coverpkg=./... -coverprofile=artefacts/coverage/coverage.out -covermode=count ./... > /dev/null
 	# ignore protobuf generated files
