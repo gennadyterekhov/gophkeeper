@@ -1,0 +1,21 @@
+name: go vet test
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  statictest:
+    runs-on: ubuntu-latest
+    container: golang:1.23
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run statictest
+        run: |
+          go mod tidy
+          go vet ./...
